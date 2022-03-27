@@ -1,0 +1,7 @@
+
+# WebhookURL
+WEBHOOK_URL="https://discord.com/api/webhooks/950246497637773342/Ah-AqTcG5dZ7tlbCrbTudT0zphnYAv_Ymc7jt6Pp-nL2FxULHGS8thH7pwdem_daamYf" 
+# アイコンのURL
+AVATAR_URL="https://www.minecraft.net/etc.clientlibs/minecraft/clientlibs/main/resources/img/GrassBlock_HighRes.png" 
+
+
