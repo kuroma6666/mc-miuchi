@@ -3,25 +3,33 @@
 #設定ファイル読み込み
 . ./bot_config.txt
 
-# コピー元からコピー先へディレクトリごとコピー
-cp -rp /opt/minecraft /media/share_minecraft
+DIR_BASE=/opt/minecraft
+DIR_COPY=media/share_minecraft
 
+# コピー元からコピー先へディレクトリごとコピー
+cp -rp $DIR_BASE $DIR_COPY
 echo Backup Done
 
+sleep 5
+
 # コピー先へ移動
-cd /media/share_minecraft
+cd $DIR_COPY
 
 # コピー先ディレクトリを圧縮
 tar cfzP `/bin/date +%Y-%m-%d`_mc-miuchi.tar.gz minecraft
-
 echo Compression Done
 
-
-rm -rf /media/share_minecraft/minecraft
-rm -rf /opt/minecraft/`/bin/date +%Y-%m-%d`_mc-miuchi.tar.gz
-
+# コピー先の一時コピーを削除
+rm -rf $DIR_COPY_DELETE/minecraft
 echo minecraft temporary directory Deleted
 
+# コピー元の圧縮ファイルを削除
+cd $DIR_BASE
+rm -rf . ./`/bin/date +%Y-%m-%d`_mc-miuchi.tar.gz
+
+sleep 5
+
+# Discord内にアナウンスをPost
 curl -s $WEBHOOK_URL \
  -X POST \
  -H 'Content-Type:application/json' \
